@@ -1,0 +1,15 @@
+[db]
+db.surisetty.online
+
+[backend]
+backend.surisetty.online
+
+[frontend]
+frontend.surisetty.online
+
+[backend-1]
+54.162.203.247
+
+[all:vars]
+ansible_user=ec2-user 
+ansible_password=DevOps321

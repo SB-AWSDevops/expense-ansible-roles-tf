@@ -1,0 +1,37 @@
+- name: create ec2 and r53 records
+  hosts: localhost
+  vars:
+    zone: surisetty.online
+    instances:
+    - db
+    - backend
+    - frontend
+  tasks:
+  - name: create ec2 instances
+    community.aws.ec2_instance:
+      instance_type: t2.micro
+      name: "{{ item }}"
+      security_group: allow-all
+      image_id: ami-090252cbe067a9e58
+      tags:
+        Name: "{{ item }}"
+    loop:
+    - db
+    - backend
+    - frontend
+    register: ec2_instance_info
+
+  - name: print the output
+    ansible.builtin.debug:
+      msg: "output: >>> {{ ec2_instance_info }}"
+
+  - name:  create r53 records
+    amazon.aws.route53:
+      state: present
+      zone: "{{ zone }}"
+      record: "{{ item.item }}.{{ zone }}"
+      type: A
+      value: "{{ item.instances[0].public_ip_address }}"
+      overwrite: true
+      ttl: 1
+    loop: "{{ ec2_instance_info.results }}"
