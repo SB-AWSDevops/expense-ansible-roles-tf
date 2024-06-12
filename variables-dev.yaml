@@ -1,4 +1,4 @@
-login_host: db-dev.surisetty.online
-login_password: ExpenseApp1
 login_user: root
+login_password: ExpenseApp1
+login_host: db-dev.surisetty.online
 DB_HOST: db-dev.surisetty.online
