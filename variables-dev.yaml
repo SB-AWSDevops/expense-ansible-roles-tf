@@ -3,3 +3,4 @@ login_password: ExpenseApp1
 login_host: db-dev.surisetty.online
 DB_HOST: db-dev.surisetty.online
 BACKEND_API_URL: backend.app-dev.surisetty.online
+nexus_url: nexus.surisetty.online:8081

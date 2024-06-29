@@ -23,12 +23,12 @@
     name: common
     tasks_from: pre-req
 
-- name: install npm dependencies
-  tags:
-    - deployment
-  ansible.builtin.command: npm install
-  args:
-    chdir: /app
+# - name: install npm dependencies
+#   tags:
+#     - deployment
+#   ansible.builtin.command: npm install
+#   args:
+#     chdir: /app
 
 - name: Setup SystemD Expense Backend Service
   ansible.builtin.template:
